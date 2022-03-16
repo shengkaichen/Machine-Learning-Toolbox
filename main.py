@@ -41,7 +41,7 @@ Anomaly_Detection.nn(test_df, 10)
 
 # project
 raw = pd.read_csv(
-    '/Users/nakreond/Programming_Languages/Python_Projects/H&M Personalized Fashion Recommendations/H_M_transaction_2020.csv')
+    '.../H_M_transaction_2020.csv')
 data = Data_Transformation.min_max(raw.iloc[:, 1:5])
 newData = Data_Reduction.pca(data)
 Anomaly_Detection.nn(newData)
