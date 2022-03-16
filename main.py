@@ -1,9 +1,10 @@
-import Anomaly_Detection
-import Data_Integration
-import Data_Reduction
-import Data_Transformation
-import Supervised_Learning
-import Unsupervised_Learning
+from Tools import Data_Transformation
+from Tools import Anomaly_Detection
+from Tools import Data_Integration
+from Tools import Data_Reduction
+from Tools import Data_Transformation
+from Tools import Supervised_Learning
+from Tools import Unsupervised_Learning
 import pandas as pd
 import numpy as np
 import random
@@ -41,7 +42,7 @@ Anomaly_Detection.nn(test_df, 10)
 
 # project
 raw = pd.read_csv(
-    '/Users/nakreond/Programming_Languages/Python_Projects/H&M Personalized Fashion Recommendations/H_M_transaction_2020.csv')
+    '.../H_M_transaction_2020.csv')
 data = Data_Transformation.min_max(raw.iloc[:, 1:5])
 newData = Data_Reduction.pca(data)
 Anomaly_Detection.nn(newData)
