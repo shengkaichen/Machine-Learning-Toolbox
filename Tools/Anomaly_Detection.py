@@ -5,18 +5,19 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-def nn(df, knn):
+def nn(df, k):
     """
-    :param df:  data frame
-    :param knn: top k-nearest-neighbors have to be found
-    :return:    new data frame contains outlier
+    Nearest Neighbors model
+    :param df: data frame
+    :param k: top k-nearest-neighbors have to be found
+    :return: new data frame contains outlier
     """
     # transform input to array
+    data = []
     if not isinstance(df, np.ndarray):
         data = df.values
 
     # implement Nearest Neighbors model
-    k = knn
     model = NearestNeighbors(n_neighbors=k)
     model.fit(data)
 

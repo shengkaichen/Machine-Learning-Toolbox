@@ -9,9 +9,10 @@ from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
 
 
-def zScore(data):
+def z_score(data):
     return pd.DataFrame(StandardScaler().fit_transform(data))
 
 
 def min_max(data):
     return pd.DataFrame(MinMaxScaler().fit_transform(data))
+

@@ -1,18 +1,13 @@
-import Data_Transformation
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
 
 
-def k_mean(data):
+def k_mean_find_k(data_scaled):
     """
-    :param data: data frame
-    :return: data frame with the cluster column
+    :param data_scaled: data frame with standardizing
+    :return: plot
     """
-    # standardizing the data
-    data_scaled = Data_Transformation.zScore(data)
-
     # statistics of scaled data
     pd.DataFrame(data_scaled).describe()
 
@@ -23,7 +18,7 @@ def k_mean(data):
     kmeans.fit(data_scaled)
 
     # inertia on the fitted data - it is sum of squared distances of samples to their closest cluster center
-    kmeans.inertia_
+    print('kmeans = 2, inertia = ', kmeans.inertia_)
 
     # fitting multiple k-means algorithms and storing the values in an empty list
     SSE = []
@@ -40,13 +35,33 @@ def k_mean(data):
     plt.ylabel('Inertia')
     plt.show()
 
-    # k means using 5 clusters and k-means++ initialization
-    kmeans = KMeans(n_clusters=20, init='k-means++')
+
+def k_mean(data_scaled, k):
+    """
+    :param data_scaled: data frame with standardizing
+    :param k: number of clusters
+    :return: data frame with the cluster column
+    """
+    # k means using input clusters and k-means++ initialization
+    kmeans = KMeans(n_clusters=k, init='k-means++')
     kmeans.fit(data_scaled)
     res = kmeans.predict(data_scaled)
 
-    frame = pd.DataFrame(data)
-    frame['cluster'] = res
+    # Inertia measures how well a dataset was clustered by K-Means
+    print('inertia: ', kmeans.inertia_)
+
+    # show the cluster
+    plt.scatter(data_scaled.iloc[:, 0], data_scaled.iloc[:, 1], c=res, s=50, cmap='viridis')
+    centers = kmeans.cluster_centers_
+    plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5)
+    plt.show()
+
+    # return the cluster value in same order of input
+    frame = pd.DataFrame({'cluster': res})
     frame['cluster'].value_counts()
 
     return frame
+
+
+
+

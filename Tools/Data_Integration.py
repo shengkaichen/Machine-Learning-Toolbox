@@ -5,13 +5,11 @@ The two quantities represent two different physical entities.
 The cosine similarity computes the similarity between two samples, whereas the Pearson correlation
 coefficient computes the correlation between two jointly distributed random variables.
 """
+
 from scipy.spatial import distance
 from scipy.stats import linregress
 from scipy.stats.stats import pearsonr
 import math
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
 
 
 class Similarity:
@@ -19,7 +17,7 @@ class Similarity:
         self.x = x
         self.y = y
 
-    # Eucliden Distance is the shortest distance between two points
+    # Euclidean Distance is the shortest distance between two points
     def Euclidean_distance(self):
         ed = distance.euclidean(self.x, self.y)
 
@@ -85,28 +83,8 @@ class Correlation:
             stderr : Standard error of the estimate
         """
 
-        pcc_1 = pearsonr(self.x, self.y)
-        pcc_2 = linregress(self.x, self.y)
+        pcc1 = pearsonr(self.x, self.y)
+        pcc2 = linregress(self.x, self.y)
 
-        return pcc_1, pcc_2
+        return pcc1, pcc2
 
-
-# Enter the value
-x = [40, 80, 12]
-y = [35, 23, 0]
-
-euclidean_distance = Similarity(x, y).Euclidean_distance()
-manhattan_distance = Similarity(x, y).Manhattan_distance()
-minkowski_distance = Similarity(x, y).Minkowski_distance()
-cosine_similarity = Similarity(x, y).Cosine_similarity()
-cosine_distance = Similarity(x, y).Cosine_distance()
-pearson_correlation_coefficient = Correlation(x, y).Pearson_correlation_coefficient()
-
-print('------------Similarity------------')
-print('Euclidean Distance between a and b is: ', euclidean_distance[0])
-print('Manhattan Distance between a and b is: ', manhattan_distance[0])
-print('Minkowski Distance between a and b is: ', minkowski_distance[0])
-print('Cosine Similarity between a and b is: ', cosine_similarity[0])
-print('Cosine Distance between a and b is: ', cosine_distance[0])
-print('------------Correlation------------')
-print('Pearson Correlation Coefficient between a and b is: ', pearson_correlation_coefficient[0][0])
