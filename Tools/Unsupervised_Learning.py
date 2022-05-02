@@ -1,6 +1,7 @@
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import pandas as pd
+import pyfpgrowth
 
 
 def k_mean_find_k(data_scaled):
@@ -63,5 +64,17 @@ def k_mean(data_scaled, k):
     return frame
 
 
+def fp_growth(data, support, confidence):
+    """
+    :param data: 1D list with List([])
+    :param support: minimum threshold set for support count
+    :param confidence: minimum threshold set for confidence
+    :return: patterns, rules
+    """
+    patterns = pyfpgrowth.find_frequent_patterns(data, support)
+    rules = pyfpgrowth.generate_association_rules(patterns, confidence)
 
+    print('Patterns size: ', len(patterns))
+    print('Rules size: ', len(rules))
 
+    return patterns, rules
