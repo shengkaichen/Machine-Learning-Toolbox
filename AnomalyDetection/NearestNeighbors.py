@@ -1,3 +1,8 @@
+"""
+Resources:
+https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/
+"""
+
 from sklearn.neighbors import NearestNeighbors
 import math
 import numpy as np
@@ -30,7 +35,7 @@ def nn(df, k):
     plt.close()
 
     # set the cutoff value to filter outlier
-    outlier = float(input("Enter value:"))
+    outlier = float(input("Enter cutoff value to filter outlier:"))
     index = np.where(distances.mean(axis=1) > outlier)
     values = df.iloc[index]
 

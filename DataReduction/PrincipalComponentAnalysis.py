@@ -12,7 +12,8 @@ def pca(data):
     # visualize the raw data in 3D
     if data.shape[1] == 3:
         ax = plt.axes(projection='3d')
-        ax.scatter3D(data.iloc[:, 0], data.iloc[:, 1], data.iloc[:, 2], 'gray')
+        colors = ["#0000FF", "#00FF00", "#FF0066"]
+        ax.scatter3D(data.iloc[:, 0], data.iloc[:, 1], data.iloc[:, 2], color='orange')
         plt.show()
         plt.close()
 

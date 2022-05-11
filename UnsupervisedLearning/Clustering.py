@@ -63,6 +63,11 @@ def k_mean(data_scaled, k):
 
     return frame
 
+    return patterns, rules
+
+# https://stackoverflow.com/questions/10364632/how-to-find-the-minimum-support-in-apriori-algorithm
+# https://stackoverflow.com/questions/25322204/minimum-support-and-minimum-confidence-in-data-mining
+# https://stats.stackexchange.com/questions/44977/what-is-the-practical-difference-between-association-rules-and-decision-trees-in
 
 def fp_growth(data, support, confidence):
     """
