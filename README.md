@@ -1,6 +1,5 @@
 # Machine Learning Toolbox
 
 ## About
-Machine learning is one of the central parts of the tools applied in AI models. The toolbox doesn't focus on computationally efficient algorithms but transparently presents the fundamental knowledge behind the mechanisms with examples.
-
+An open-source Machine Learning Toolbox, designed to demystify the underlying principles of AI models by providing a transparent overview of fundamental machine learning concepts, paired with illustrative examples, catering to users seeking to deepen their understanding rather than prioritizing computational efficiency.
 
